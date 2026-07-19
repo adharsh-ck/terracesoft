@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TerraceSoft</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Outfit',sans-serif;
+background:#070b18;
+color:white;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:#0f172a;
+position:sticky;
+top:0;
+}
+
+.logo{
+font-size:32px;
+font-weight:800;
+color:#4fc3ff;
+letter-spacing:1px;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+margin-left:25px;
+font-size:16px;
+}
+
+.hero{
+padding:120px 20px;
+text-align:center;
+}
+
+.hero h1{
+font-size:70px;
+font-weight:800;
+}
+
+.hero span{
+color:#4fc3ff;
+}
+
+.hero p{
+margin-top:20px;
+font-size:22px;
+color:#cbd5e1;
+max-width:700px;
+margin-left:auto;
+margin-right:auto;
+line-height:1.7;
+}
+
+.button{
+display:inline-block;
+margin-top:35px;
+padding:15px 35px;
+background:#4fc3ff;
+color:#000;
+text-decoration:none;
+border-radius:10px;
+font-weight:700;
+}
+
+.container{
+width:90%;
+max-width:1100px;
+margin:auto;
+}
+
+.card{
+background:#111827;
+padding:35px;
+margin-top:60px;
+border-radius:18px;
+}
+
+.card h2{
+color:#4fc3ff;
+font-size:34px;
+margin-bottom:20px;
+}
+
+.card p{
+font-size:18px;
+line-height:1.8;
+color:#d1d5db;
+}
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
+margin-top:30px;
+}
+
+.service{
+background:#1e293b;
+padding:25px;
+border-radius:15px;
+}
+
+.service h3{
+color:#4fc3ff;
+margin-bottom:10px;
+}
+
+.founder{
+text-align:center;
+padding:80px 20px;
+}
+
+.founder img{
+width:140px;
+height:140px;
+border-radius:50%;
+background:#1e293b;
+margin-bottom:20px;
+}
+
+.founder h2{
+font-size:34px;
+}
+
+.founder h3{
+color:#4fc3ff;
+margin-top:10px;
+}
+
+.social{
+margin-top:25px;
+}
+
+.social a{
+display:inline-block;
+margin:10px;
+padding:12px 25px;
+background:#4fc3ff;
+text-decoration:none;
+color:black;
+font-weight:700;
+border-radius:10px;
+}
+
+footer{
+margin-top:80px;
+padding:25px;
+background:#0f172a;
+text-align:center;
+color:#9ca3af;
+}
+
+@media(max-width:768px){
+
+.logo{
+font-size:24px;
+}
+
+.hero h1{
+font-size:48px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+nav{
+display:none;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">TerraceSoft</div>
+
+<nav>
+<a href="#story">Story</a>
+<a href="#services">Services</a>
+<a href="#founder">Founder</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>Turning <span>Ideas</span><br>Into Digital Reality.</h1>
+
+<h2 class="tagline">Rise • Dream • Build</h2>
+
+<p>
+We create modern software, mobile applications,
+games and cybersecurity solutions with passion and innovation.
+</p>
+
+<a class="button" href="#story">Explore</a>
+
+</section>
+
+<div class="container">
+
+<div class="card" id="story">
+
+<h2>The Story Behind TerraceSoft</h2>
+
+<p>
+
+"Terrace symbolizes the moment when someone steps out from pressure,
+looks at the open sky, finds hope, and decides to build something of their own."
+
+<br><br>
+
+TerraceSoft was born from a simple belief:
+Every great journey begins with one brave step.
+We transform ideas into digital experiences that inspire people and businesses.
+
+</p>
+
+</div>
+<div class="card" id="services">
+
+<h2>Our Services</h2>
+
+<div class="services">
+
+<div class="service">
+<h3>Mobile Apps</h3>
+<p>Modern Android application development with clean UI.</p>
+</div>
+
+<div class="service">
+<h3>Game Development</h3>
+<p>Creative and engaging mobile games built with modern technology.</p>
+</div>
+
+<div class="service">
+<h3>Cybersecurity</h3>
+<p>Security-focused solutions to help businesses stay protected.</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<section class="founder" id="founder">
+
+<h2>CEO & Founder</h2>
+
+<h3>Adharsh CK</h3>
+
+<p style="max-width:700px;margin:20px auto;color:#cbd5e1;line-height:1.8;">
+
+Passionate about building software, mobile applications,
+games and cybersecurity solutions.
+TerraceSoft represents the dream of turning ideas into reality through technology.
+
+</p>
+
+<div class="social">
+
+<a href="https://www.linkedin.com/in/adharsh-ck" target="_blank">
+LinkedIn
+</a>
+
+<a href="https://www.instagram.com/im_adharzh?igsh=MW51MXAwaGoxNzJxYw==" target="_blank">
+Instagram
+</a>
+
+</div>
+
+</section>
+
+<footer>
+
+<h3 style="color:#4fc3ff;">TerraceSoft</h3>
+
+<p style="margin-top:10px;">
+Building Tomorrow's Digital Future.
+</p>
+
+<p style="margin-top:15px;font-size:14px;">
+© 2026 TerraceSoft. All Rights Reserved.
+</p>
+
+</footer>
+
+</body>
+</html>

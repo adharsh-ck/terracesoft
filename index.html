@@ -1,26 +1,3 @@
-Njangal code complete aayi rewrite cheythittund! Athil venam ennu paranja animations (text animations, mouse hover/parallax effects, particle system) and simple visual game element integrate cheythittund.
-
-### Main Additions:
-
-1. **Interactive Game Element (Particle Dodge/Catch Core):**
-* Canvas particle system on screen background.
-* Core hero element visual now follows and physically interacts/repels slightly with mouse coordinates.
-* Mouse hover points-il interactive particle trails dynamic aayi trigger aakum.
-
-
-2. **Advanced Text Animations:**
-* Word/Letter typing fade dynamic text animation on heading elements.
-* Glowing gradient and shimmer shift hover animations.
-
-
-3. **Smooth Scroll Reveal & Magnetic Buttons:**
-* Modern interactive cursor glow & hover dynamics on buttons and elements.
-
-
-
-Njangal code updated file upload/view structured format-il ready aakiyittund:
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,11 +29,6 @@ body {
 a { color: inherit; text-decoration: none; }
 .container { width: min(1150px, 90%); margin: auto; }
 
-#gameCanvas {
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    pointer-events: none; z-index: 1;
-}
-
 body::before {
     content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
     background: radial-gradient(ellipse at 80% 20%, rgba(112,55,190,.13), transparent 40%),
@@ -83,20 +55,13 @@ header {
     -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .nav-links { display: flex; align-items: center; gap: 34px; }
-.nav-links a { color: #b6b2c5; font-size: 13px; transition: .3s; position: relative; }
-.nav-links a::after {
-    content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0;
-    background: var(--purple); transition: width 0.3s ease;
-}
-.nav-links a:hover::after { width: 100%; }
+.nav-links a { color: #b6b2c5; font-size: 13px; transition: .3s; }
 .nav-links a:hover { color: white; }
 .nav-links .nav-cta {
     background: linear-gradient(100deg,#7844dd,#596cff);
     padding: 12px 20px; color: white; border-radius: 7px;
     box-shadow: 0 0 25px rgba(128,77,255,.25);
-    transition: transform 0.2s, box-shadow 0.2s;
 }
-.nav-links .nav-cta:hover { transform: scale(1.05); box-shadow: 0 0 35px rgba(128,77,255,.5); }
 .menu-btn {
     display: none; background: none; border: none;
     color: white; font-size: 26px; cursor: pointer;
@@ -105,7 +70,7 @@ header {
 /* HERO */
 .hero {
     min-height: 850px; position: relative; display: flex; align-items: center;
-    overflow: hidden; padding: 120px 0 80px; z-index: 2;
+    overflow: hidden; padding: 120px 0 80px;
 }
 .hero-grid {
     display: grid; grid-template-columns: 1fr 1fr; align-items: center;
@@ -117,9 +82,7 @@ header {
     color: #c3adff; border: 1px solid rgba(155,112,255,.3);
     background: rgba(128,80,255,.08); border-radius: 30px;
     padding: 10px 16px; font-size: 11px; letter-spacing: 1.5px; margin-bottom: 30px;
-    transition: transform 0.3s;
 }
-.eyebrow:hover { transform: scale(1.03); }
 .live-dot {
     height: 7px; width: 7px; border-radius: 50%; background: #a77aff;
     box-shadow: 0 0 12px #a77aff; animation: blink 2s infinite;
@@ -130,9 +93,7 @@ header {
 }
 .gradient-text {
     background: linear-gradient(100deg,#a77aff,#728dff,#e18cff);
-    background-size: 200% auto;
     -webkit-background-clip: text; background-clip: text; color: transparent;
-    animation: textShimmer 4s linear infinite;
 }
 .hero-description {
     max-width: 510px; color: var(--muted); font-size: 15px;
@@ -141,21 +102,20 @@ header {
 .hero-buttons { display: flex; gap: 15px; margin-top: 35px; flex-wrap: wrap; }
 .btn {
     padding: 15px 23px; border-radius: 7px; font-size: 13px;
-    font-weight: 600; transition: .3s; cursor: pointer;
+    font-weight: 600; transition: .3s;
 }
 .btn-primary {
     background: linear-gradient(100deg,#824be7,#5b75ff);
     box-shadow: 0 0 25px rgba(129,76,255,.35);
 }
-.btn-primary:hover { transform: translateY(-4px) scale(1.02); box-shadow: 0 0 40px rgba(129,76,255,.55); }
+.btn-primary:hover { transform: translateY(-4px); box-shadow: 0 0 40px rgba(129,76,255,.55); }
 .btn-outline { border: 1px solid var(--border); color: #ddd9eb; }
 .btn-outline:hover { border-color: var(--purple); transform: translateY(-4px); }
 
-/* HERO VISUAL & INTERACTIVE CORE */
+/* HERO ANIMATED VISUAL */
 .hero-visual {
     height: 570px; position: relative; display: flex;
     align-items: center; justify-content: center; animation: fadeIn 1.5s ease both;
-    perspective: 1000px;
 }
 .orbit {
     position: absolute; border: 1px solid rgba(170,119,255,.32);
@@ -171,6 +131,16 @@ header {
     width: 280px; height: 280px; animation: rotate 17s linear infinite;
     border-color: rgba(219,122,255,.5);
 }
+.orbit::before {
+    content: ""; position: absolute; width: 11px; height: 11px;
+    border-radius: 50%; background: #c19aff;
+    box-shadow: 0 0 20px 5px rgba(165,103,255,.8); top: 15%; left: 15%;
+}
+.orbit-two::before {
+    top: 75%; left: 5%; background: #7ca4ff;
+    box-shadow: 0 0 20px 5px #625fff;
+}
+.orbit-three::before { top: 20%; left: 80%; }
 .core {
     width: 175px; height: 175px; border-radius: 50%; position: relative; z-index: 3;
     display: flex; justify-content: center; align-items: center; flex-direction: column;
@@ -179,7 +149,7 @@ header {
                 linear-gradient(145deg,#9b72ff,#393b93 60%,#15122c);
     box-shadow: 0 0 35px rgba(156,105,255,.7), 0 0 90px rgba(130,79,255,.4),
                 inset 0 0 30px rgba(255,255,255,.3);
-    transition: transform 0.15s ease-out; cursor: pointer;
+    animation: float 4s ease-in-out infinite;
 }
 .core::after {
     content: ""; position: absolute; inset: 7px;
@@ -191,28 +161,31 @@ header {
 }
 .core small { font-size: 9px; letter-spacing: 2px; margin-top: 7px; color: white; }
 
-/* FLOATING INTERACTIVE CARDS */
+/* FLOATING CARDS */
 .float-card {
     position: absolute; z-index: 5; padding: 15px 18px;
     background: rgba(18,15,37,.85); backdrop-filter: blur(15px);
     border: 1px solid rgba(173,137,255,.25); border-radius: 11px;
     box-shadow: 0 15px 45px rgba(0,0,0,.35);
-    transition: transform 0.2s ease, border-color 0.3s ease;
-    cursor: pointer;
+    animation: float 5s ease-in-out infinite;
 }
-.float-card:hover { transform: scale(1.08) translateY(-5px) !important; border-color: var(--pink); }
+.float-card strong { font-size: 12px; display: block; }
+.float-card small { font-size: 10px; color: #aaa3c3; }
 .card-one { top: 15%; right: 0; }
-.card-two { bottom: 15%; left: 0; }
-.card-three { top: 60%; right: 0; }
+.card-two { bottom: 15%; left: 0; animation-delay: -2s; }
+.card-three { top: 60%; right: 0; animation-delay: -3s; }
+.float-icon { color: #b99aff; margin-bottom: 7px; font-size: 18px; }
 
+/* ANIMATIONS */
 @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @keyframes rotateReverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-17px); } }
 @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
 @keyframes slideUp { from { opacity: 0; transform: translateY(35px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes textShimmer { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
 
-section:not(.hero) { padding: 110px 0; scroll-margin-top: 75px; position: relative; z-index: 2; }
+/* COMMON SECTIONS */
+section:not(.hero) { padding: 110px 0; scroll-margin-top: 75px; }
 .section-label {
     color: #a88aff; font-size: 11px; font-weight: 700;
     letter-spacing: 2.5px; margin-bottom: 20px;
@@ -240,9 +213,8 @@ section:not(.hero) { padding: 110px 0; scroll-margin-top: 75px; position: relati
     border-radius: 18px;
     background: radial-gradient(circle at 50% 50%,rgba(133,83,255,.3),transparent 65%), #100e1d;
     display: flex; align-items: center; justify-content: center;
-    position: relative; overflow: hidden; transition: transform 0.4s ease;
+    position: relative; overflow: hidden;
 }
-.about-art:hover { transform: scale(1.02); }
 .about-art::before, .about-art::after {
     content: ""; position: absolute; border: 1px solid rgba(173,132,255,.4);
     border-radius: 50%; width: 220px; height: 220px;
@@ -260,7 +232,9 @@ section:not(.hero) { padding: 110px 0; scroll-margin-top: 75px; position: relati
 }
 
 /* FOUNDER */
-.founder { margin-top: 28px; display: flex; align-items: center; gap: 12px; }
+.founder {
+    margin-top: 28px; display: flex; align-items: center; gap: 12px;
+}
 .founder-line { width: 28px; height: 1px; background: #a88aff; }
 .founder-info { display: flex; flex-direction: column; gap: 3px; }
 .founder-info strong {
@@ -279,27 +253,38 @@ section:not(.hero) { padding: 110px 0; scroll-margin-top: 75px; position: relati
 .product-card {
     position: relative; overflow: hidden; padding: 35px; min-height: 290px;
     background: linear-gradient(145deg,#171329,#0f0d1d);
-    border: 1px solid var(--border); border-radius: 14px; transition: .4s ease;
+    border: 1px solid var(--border); border-radius: 14px; transition: .4s;
 }
 .product-card::after {
     content: ""; position: absolute; width: 220px; height: 220px;
     border-radius: 50%; background: rgba(129,84,255,.12);
-    filter: blur(50px); top: -80px; right: -80px; transition: transform 0.5s ease;
+    filter: blur(50px); top: -80px; right: -80px;
 }
-.product-card:hover::after { transform: scale(1.4); }
 .product-card:hover {
     transform: translateY(-8px); border-color: rgba(160,120,255,.5);
-    box-shadow: 0 20px 60px rgba(89,57,160,.25);
+    box-shadow: 0 20px 60px rgba(89,57,160,.15);
 }
 .product-icon {
     width: 55px; height: 55px; display: grid; place-items: center;
     border-radius: 13px; background: linear-gradient(140deg,#7952c7,#3e55a7);
     font-size: 25px; margin-bottom: 25px; position: relative; z-index: 2;
-    transition: transform 0.3s;
 }
-.product-card:hover .product-icon { transform: rotate(10deg) scale(1.1); }
+.product-card h3 {
+    font-family: 'Space Grotesk',sans-serif; font-size: 23px;
+    margin-bottom: 13px; position: relative; z-index: 2;
+}
+.product-card p {
+    color: var(--muted); font-size: 13px; line-height: 1.9;
+    position: relative; z-index: 2;
+}
+.product-status {
+    display: inline-block; margin-top: 23px; padding: 7px 12px;
+    border-radius: 30px; color: #c3aaff; background: rgba(145,98,255,.1);
+    border: 1px solid rgba(145,98,255,.25); font-size: 10px;
+    letter-spacing: 1px; position: relative; z-index: 2;
+}
 
-/* VISION & VALUES */
+/* VISION */
 .vision {
     background: radial-gradient(ellipse at center,rgba(112,65,195,.2),transparent 65%), #100c20;
     text-align: center; border-top: 1px solid var(--border);
@@ -308,24 +293,62 @@ section:not(.hero) { padding: 110px 0; scroll-margin-top: 75px; position: relati
 .vision .section-title { max-width: 800px; margin: auto; }
 .vision .section-description { margin: 22px auto 0; }
 
+/* VALUES */
 .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 45px; }
 .value-card {
     background: var(--card); border: 1px solid var(--border);
-    padding: 30px; border-radius: 12px; transition: .3s ease;
+    padding: 30px; border-radius: 12px; transition: .3s;
 }
 .value-card:hover { transform: translateY(-5px); border-color: rgba(148,107,255,.45); }
 .value-number { color: #a88aff; font-size: 11px; letter-spacing: 2px; margin-bottom: 23px; }
+.value-card h3 { font-size: 19px; margin-bottom: 13px; }
+.value-card p { color: var(--muted); font-size: 13px; line-height: 1.9; }
 
-/* CONTACT & FOOTER */
+/* FOOTER */
+footer { padding: 45px 0; background: #07050e; border-top: 1px solid var(--border); }
+.footer-content {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 20px; flex-wrap: wrap;
+}
+.footer-content p { color: #858094; font-size: 12px; margin-top: 10px; }
+.footer-tagline { font-size: 11px; letter-spacing: 3px; color: #a88aff; }
+
+
+/* CONTACT */
 .contact {
     background: radial-gradient(ellipse at 80% 45%, rgba(112,65,195,.13), transparent 55%), #0b0915;
-    border-top: 1px solid var(--border); z-index: 2; position: relative;
+    border-top: 1px solid var(--border);
 }
-.contact-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 25px; align-items: stretch; }
+.contact-heading { margin-bottom: 42px; }
+.contact-layout {
+    display: grid; grid-template-columns: .8fr 1.2fr; gap: 25px; align-items: stretch;
+}
 .contact-side, .contact-form {
     background: linear-gradient(145deg,#171329,#0f0d1d);
     border: 1px solid var(--border); border-radius: 14px; padding: 32px;
 }
+.contact-side-icon {
+    width: 52px; height: 52px; border-radius: 12px; display: grid; place-items: center;
+    background: linear-gradient(140deg,#7952c7,#3e55a7); font-size: 23px; margin-bottom: 25px;
+}
+.contact-side h3 {
+    font-family: 'Space Grotesk',sans-serif; font-size: 23px; margin-bottom: 13px;
+}
+.contact-side p { color: var(--muted); font-size: 13px; line-height: 1.9; }
+.contact-email {
+    display: inline-block; margin-top: 22px; color: #c5aaff; font-size: 13px;
+    overflow-wrap: anywhere;
+}
+.contact-founder {
+    margin-top: 42px; padding-top: 22px; border-top: 1px solid var(--border);
+    display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+}
+.contact-founder span { color: #9b93b2; font-size: 10px; letter-spacing: 1.6px; }
+.contact-founder a { font-family: 'Space Grotesk',sans-serif; font-weight: 600; font-size: 16px; }
+.contact-founder a:hover, .founder-info a:hover { color: #b99aff; }
+.contact-founder small { color: #89839c; font-size: 11px; }
+.contact-form { display: flex; flex-direction: column; gap: 11px; }
+.contact-form label { font-size: 12px; color: #e6e1f2; margin-top: 8px; }
 .contact-form input, .contact-form textarea {
     width: 100%; border: 1px solid rgba(255,255,255,.12); outline: none;
     background: rgba(5,4,12,.55); color: white; border-radius: 7px;
@@ -335,6 +358,7 @@ section:not(.hero) { padding: 110px 0; scroll-margin-top: 75px; position: relati
 .contact-form input:focus, .contact-form textarea:focus {
     border-color: #9870ff; box-shadow: 0 0 0 3px rgba(142,99,255,.12);
 }
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: #777286; }
 .contact-submit {
     margin-top: 14px; width: 100%; border: 0; border-radius: 7px; padding: 16px;
     color: white; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer;
@@ -342,17 +366,74 @@ section:not(.hero) { padding: 110px 0; scroll-margin-top: 75px; position: relati
     box-shadow: 0 0 25px rgba(129,76,255,.25); transition: .3s;
 }
 .contact-submit:hover { transform: translateY(-3px); box-shadow: 0 0 35px rgba(129,76,255,.4); }
+.contact-submit span { margin-left: 6px; }
+.form-note { color: #89839c; font-size: 10px; line-height: 1.6; text-align: center; margin-top: 5px; }
+.form-success { color: #9fe5bd; font-size: 12px; text-align: center; }
+@media(max-width:850px) {
+    .contact-layout { grid-template-columns: 1fr; }
+}
 
-footer { padding: 45px 0; background: #07050e; border-top: 1px solid var(--border); z-index: 2; position: relative;}
-.footer-content { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
-
+/* SCROLL REVEAL */
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease,transform .8s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media(max-width:850px) {
+    .nav-links { gap: 20px; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero { padding-top: 150px; }
+    .hero-visual { height: 450px; }
+    .orbit-one { width: 390px; height: 390px; }
+    .orbit-two { width: 310px; height: 310px; }
+    .orbit-three { width: 225px; height: 225px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+@media(max-width:650px) {
+    .nav { height: 70px; }
+    .menu-btn { display: block; }
+    .nav-links {
+        display: none; position: absolute; top: 70px; left: 0;
+        width: 100%; padding: 25px 5%; background: #100d1b;
+        flex-direction: column; align-items: flex-start;
+        border-bottom: 1px solid var(--border);
+    }
+    .nav-links.active { display: flex; }
+    .hero { min-height: auto; padding-top: 150px; padding-bottom: 50px; }
+    .hero h1 { letter-spacing: -2.5px; }
+    .hero-visual { height: 390px; margin-top: 20px; }
+    .orbit-one { width: 330px; height: 330px; }
+    .orbit-two { width: 260px; height: 260px; }
+    .orbit-three { width: 190px; height: 190px; }
+    .core { width: 140px; height: 140px; }
+    .core strong { font-size: 21px; }
+    .float-card { padding: 11px; }
+    .card-one { right: -3px; }
+    .card-two { left: -3px; }
+    .card-three { right: -3px; }
+    section:not(.hero) { padding: 80px 0; }
+    .product-grid, .values-grid { grid-template-columns: 1fr; }
+    .product-card { padding: 28px; }
+    .footer-content { flex-direction: column; align-items: flex-start; }
+}
+@media(max-width:370px) {
+    .orbit-one { width: 285px; height: 285px; }
+    .orbit-two { width: 225px; height: 225px; }
+    .orbit-three { width: 170px; height: 170px; }
+    .float-card { padding: 8px; }
+}
+@media(prefers-reduced-motion: reduce) {
+    *,*::before,*::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+}
 </style>
 </head>
 
 <body>
-<canvas id="gameCanvas"></canvas>
 <div class="noise"></div>
 
 <header>
@@ -388,11 +469,11 @@ footer { padding: 45px 0; background: #07050e; border-top: 1px solid var(--borde
             </div>
         </div>
 
-        <div class="hero-visual" id="heroVisual">
+        <div class="hero-visual">
             <div class="orbit orbit-one"></div>
             <div class="orbit orbit-two"></div>
             <div class="orbit orbit-three"></div>
-            <div class="core" id="interactiveCore"><strong>T/S</strong><small>INNOVATION</small></div>
+            <div class="core"><strong>T/S</strong><small>INNOVATION</small></div>
             <div class="float-card card-one">
                 <div class="float-icon">✦</div>
                 <strong>Digital Innovation</strong><small>Ideas into reality</small>
@@ -421,8 +502,20 @@ footer { padding: 45px 0; background: #07050e; border-top: 1px solid var(--borde
                 Terracesoft is an independent technology company
                 focused on creating its own digital products,
                 software applications and interactive experiences.
+                Driven by curiosity and creativity, we explore
+                new possibilities and transform ideas into
+                technology-driven products.
             </p>
+
+            <div class="founder">
+                <span class="founder-line"></span>
+                <div class="founder-info">
+                    <strong><a href="https://www.linkedin.com/in/adharsh-ck/" target="_blank" rel="noopener noreferrer">Adharsh CK ↗</a></strong>
+                    <span>Founder &amp; CEO</span>
+                </div>
+            </div>
         </div>
+
         <div class="about-art reveal">
             <div class="about-mark">T/S</div>
         </div>
@@ -433,129 +526,194 @@ footer { padding: 45px 0; background: #07050e; border-top: 1px solid var(--borde
     <div class="container">
         <div class="product-heading reveal">
             <div class="section-label">02 — OUR PRODUCTS</div>
-            <h2 class="section-title">Built from ideas.<br><span class="gradient-text">Designed for the future.</span></h2>
+            <h2 class="section-title">
+                Built from ideas.<br>
+                <span class="gradient-text">Designed for the future.</span>
+            </h2>
+            <p class="section-description">
+                A growing collection of digital products
+                developed under the Terracesoft brand.
+            </p>
         </div>
+
         <div class="product-grid">
             <article class="product-card reveal">
                 <div class="product-icon">◉</div>
                 <h3>GPS Speed Meter</h3>
-                <p>A GPS-powered mobile application designed to track speed and measure distance.</p>
+                <p>
+                    A GPS-powered mobile application designed
+                    to track speed, measure distance and provide
+                    real-time driving information.
+                </p>
+                <span class="product-status">IN DEVELOPMENT</span>
             </article>
+
             <article class="product-card reveal">
                 <div class="product-icon">▣</div>
                 <h3>Techdesk</h3>
-                <p>A digital workspace concept designed to organize IT support activities.</p>
+                <p>
+                    A digital workspace concept designed to
+                    organize IT support activities, manage tickets
+                    and simplify technical workflows.
+                </p>
+                <span class="product-status">IN DEVELOPMENT</span>
             </article>
+        </div>
+    </div>
+</section>
+
+<section class="vision" id="vision">
+    <div class="container reveal">
+        <div class="section-label">03 — OUR VISION</div>
+        <h2 class="section-title">
+            Think Beyond.<br>
+            <span class="gradient-text">Build What's Next.</span>
+        </h2>
+        <p class="section-description">
+            Our vision is to grow into a technology-driven
+            company with a portfolio of meaningful digital products.
+            We aim to explore emerging technologies, challenge
+            limitations and create experiences that matter.
+        </p>
+    </div>
+</section>
+
+<section id="values">
+    <div class="container">
+        <div class="reveal">
+            <div class="section-label">04 — WHAT DRIVES US</div>
+            <h2 class="section-title">
+                Our principles.<br>
+                <span class="gradient-text">Our direction.</span>
+            </h2>
+        </div>
+
+        <div class="values-grid">
+            <div class="value-card reveal">
+                <div class="value-number">01 / THINK</div>
+                <h3>Think Differently</h3>
+                <p>
+                    Every innovation begins with curiosity.
+                    We believe in exploring possibilities
+                    beyond conventional thinking.
+                </p>
+            </div>
+
+            <div class="value-card reveal">
+                <div class="value-number">02 / CREATE</div>
+                <h3>Create With Purpose</h3>
+                <p>
+                    We turn ideas into practical digital
+                    experiences through creativity and technology.
+                </p>
+            </div>
+
+            <div class="value-card reveal">
+                <div class="value-number">03 / EVOLVE</div>
+                <h3>Keep Evolving</h3>
+                <p>
+                    Technology never stands still.
+                    Learning, adapting and innovation
+                    are part of our journey.
+                </p>
+            </div>
         </div>
     </div>
 </section>
 </main>
 
+
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="contact-heading reveal">
+            <div class="section-label">05 — GET IN TOUCH</div>
+            <h2 class="section-title">Let's start a <span class="gradient-text">conversation.</span></h2>
+            <p class="section-description">
+                Have a question about Terracesoft or one of our products?
+                Send us a message. We'd be glad to hear from you.
+            </p>
+        </div>
+
+        <div class="contact-layout">
+            <div class="contact-side reveal">
+                <div class="contact-side-icon">✉</div>
+                <h3>Connect with Terracesoft</h3>
+                <p>For product questions, feedback and general enquiries, reach us by email.</p>
+                <a class="contact-email" href="mailto:officialterracesoft@gmail.com">officialterracesoft@gmail.com ↗</a>
+                <div class="contact-founder">
+                    <span>FOUNDER &amp; CEO</span>
+                    <a href="https://www.linkedin.com/in/adharsh-ck/" target="_blank" rel="noopener noreferrer">Adharsh CK ↗</a>
+                    <small>Connect on LinkedIn</small>
+                </div>
+            </div>
+
+            <form class="contact-form reveal"
+                  action="https://formsubmit.co/officialterracesoft@gmail.com"
+                  method="POST">
+                <input type="hidden" name="_subject" value="New message from Terracesoft website">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="true">
+                <input type="hidden" name="_next" value="https://adharsh-ck.github.io/terracesoft/?message=sent#contact">
+
+                <label for="contact-name">Your Name</label>
+                <input id="contact-name" type="text" name="name" placeholder="Your name" required>
+
+                <label for="contact-email">Your Email Address</label>
+                <input id="contact-email" type="email" name="email" placeholder="you@example.com" required>
+
+                <label for="contact-subject">Subject</label>
+                <input id="contact-subject" type="text" name="subject" placeholder="How can we help?" required>
+
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="message" rows="5"
+                          placeholder="Write your message here..." required></textarea>
+
+                <button class="contact-submit" type="submit">Send Message <span>↗</span></button>
+                <p class="form-note">Your message will be sent to the Terracesoft email address.</p>
+                <p class="form-success" id="formSuccess" role="status" aria-live="polite" hidden>
+                    Thank you! Your message has been submitted.
+                </p>
+            </form>
+        </div>
+    </div>
+</section>
+
 <footer>
     <div class="container footer-content">
-        <a href="#home" class="logo">TERRA<span>CESOFT.</span></a>
-        <p>© 2026 Terracesoft. All rights reserved.</p>
+        <div>
+            <a href="#home" class="logo">TERRA<span>CESOFT.</span></a>
+            <p>© 2026 Terracesoft. All rights reserved.</p>
+        </div>
+        <div class="footer-tagline"><a href="#contact">CONTACT</a> &nbsp;·&nbsp; RISE. DREAM. BUILD.</div>
     </div>
 </footer>
 
 <script>
-// Interactive Canvas Particle & Dodge Game Loop
-const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
-let particles = [];
-let mouse = { x: null, y: null, radius: 120 };
+// MOBILE NAVIGATION
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
 
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
-resizeCanvas();
-window.addEventListener('resize', resizeCanvas);
-
-window.addEventListener('mousemove', (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-    
-    // Add dynamic cursor trail particles
-    for (let i = 0; i < 2; i++) {
-        particles.push(new Particle(mouse.x, mouse.y, true));
-    }
+menuBtn.addEventListener("click", () => {
+    const opened = navLinks.classList.toggle("active");
+    menuBtn.textContent = opened ? "✕" : "☰";
+    menuBtn.setAttribute("aria-expanded", opened);
 });
 
-class Particle {
-    constructor(x, y, isTrail = false) {
-        this.x = x || Math.random() * canvas.width;
-        this.y = y || Math.random() * canvas.height;
-        this.size = isTrail ? Math.random() * 3 + 1 : Math.random() * 2 + 1;
-        this.baseX = this.x;
-        this.baseY = this.y;
-        this.vx = (Math.random() - 0.5) * 1.5;
-        this.vy = (Math.random() - 0.5) * 1.5;
-        this.color = isTrail ? '#e46bff' : '#925cff';
-        this.life = isTrail ? 60 : Infinity;
-    }
-    draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.closePath();
-        ctx.fill();
-    }
-    update() {
-        if (mouse.x && mouse.y) {
-            let dx = mouse.x - this.x;
-            let dy = mouse.y - this.y;
-            let distance = Math.sqrt(dx * dx + dy * dy);
-            if (distance < mouse.radius) {
-                let force = (mouse.radius - distance) / mouse.radius;
-                let directionX = dx / distance;
-                let directionY = dy / distance;
-                this.x -= directionX * force * 5;
-                this.y -= directionY * force * 5;
-            }
-        }
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-
-        if (this.life !== Infinity) this.life--;
-    }
-}
-
-for (let i = 0; i < 60; i++) {
-    particles.push(new Particle());
-}
-
-function animateParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach((p, index) => {
-        if (p.life <= 0) {
-            particles.splice(index, 1);
-        } else {
-            p.update();
-            p.draw();
-        }
+document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        menuBtn.textContent = "☰";
+        menuBtn.setAttribute("aria-expanded", "false");
     });
-    requestAnimationFrame(animateParticles);
-}
-animateParticles();
+});
 
-// Interactive Core Tilt & Motion Effect
-const heroVisual = document.getElementById('heroVisual');
-const core = document.getElementById('interactiveCore');
 
-if(heroVisual && core) {
-    heroVisual.addEventListener('mousemove', (e) => {
-        const rect = heroVisual.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        core.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) scale(1.05)`;
-    });
-
-    heroVisual.addEventListener('mouseleave', () => {
-        core.style.transform = `translate(0px, 0px) scale(1)`;
-    });
+// Show a confirmation notice after FormSubmit redirects back to the site.
+const pageParams = new URLSearchParams(window.location.search);
+if (pageParams.get("message") === "sent") {
+    const successMessage = document.getElementById("formSuccess");
+    if (successMessage) successMessage.hidden = false;
+    history.replaceState({}, document.title, window.location.pathname + "#contact");
 }
 
 // SCROLL ANIMATION
@@ -563,13 +721,14 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
         }
     });
 }, { threshold: 0.12 });
 
-document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
+});
 </script>
 </body>
 </html>
-
-```

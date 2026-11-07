@@ -3,696 +3,531 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080b12">
-
-<title>Terracesoft — Rise. Dream. Build.</title>
-
-<meta name="description" content="Terracesoft is an independent technology company focused on building innovative digital products, software and applications.">
-
+<meta name="theme-color" content="#080611">
+<title>Terracesoft | Rise. Dream. Build.</title>
+<meta name="description" content="Terracesoft is an independent technology company creating innovative digital products, applications and software.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-    --bg: #080b12;
-    --card: #101521;
-    --text: #f5f7ff;
-    --muted: #939cad;
-    --blue: #648cff;
-    --purple: #9a75ff;
-    --border: rgba(255,255,255,.09);
+    --bg: #080611;
+    --card: #100e1d;
+    --purple: #925cff;
+    --blue: #668cff;
+    --pink: #e46bff;
+    --white: #ffffff;
+    --muted: #a3a0b4;
+    --border: rgba(255,255,255,.10);
 }
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    overflow-x: hidden;
+    background: var(--bg); color: var(--white);
+    font-family: 'DM Sans', sans-serif; overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+.container { width: min(1150px, 90%); margin: auto; }
+
+body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background: radial-gradient(ellipse at 80% 20%, rgba(112,55,190,.13), transparent 40%),
+                radial-gradient(ellipse at 10% 70%, rgba(54,80,180,.10), transparent 40%);
+}
+.noise {
+    position: fixed; inset: 0; pointer-events: none; z-index: 10; opacity: .025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.container {
-    width: min(1120px, 90%);
-    margin: auto;
-}
-
-/* NAVIGATION */
-
+/* NAVBAR */
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 100;
-    background: rgba(8,11,18,.85);
-    backdrop-filter: blur(18px);
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+    background: rgba(8,6,17,.76); backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
 }
-
-.nav {
-    height: 76px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
+.nav { height: 78px; display: flex; justify-content: space-between; align-items: center; }
 .logo {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 25px;
-    font-weight: 700;
-    letter-spacing: -1.5px;
+    font-family: 'Space Grotesk', sans-serif; font-size: 25px;
+    font-weight: 700; letter-spacing: -1.4px;
 }
-
 .logo span {
-    color: var(--blue);
+    background: linear-gradient(90deg,#a17aff,#6f9fff);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 32px;
+.nav-links { display: flex; align-items: center; gap: 34px; }
+.nav-links a { color: #b6b2c5; font-size: 13px; transition: .3s; }
+.nav-links a:hover { color: white; }
+.nav-links .nav-cta {
+    background: linear-gradient(100deg,#7844dd,#596cff);
+    padding: 12px 20px; color: white; border-radius: 7px;
+    box-shadow: 0 0 25px rgba(128,77,255,.25);
 }
-
-.nav-links a {
-    color: var(--muted);
-    font-size: 13px;
-    transition: .3s;
-}
-
-.nav-links a:hover {
-    color: white;
-}
-
-.nav-button {
-    background: white;
-    color: #080b12 !important;
-    padding: 11px 19px;
-    border-radius: 6px;
-    font-weight: 700;
-}
-
 .menu-btn {
-    display: none;
-    color: white;
-    background: none;
-    border: 0;
-    font-size: 26px;
-    cursor: pointer;
+    display: none; background: none; border: none;
+    color: white; font-size: 26px; cursor: pointer;
 }
 
 /* HERO */
-
 .hero {
-    min-height: 760px;
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
+    min-height: 850px; position: relative; display: flex; align-items: center;
+    overflow: hidden; padding: 120px 0 80px;
 }
-
-.hero::before {
-    content: "";
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(67,105,255,.18), transparent 70%);
-    top: 5%;
-    right: -10%;
-    pointer-events: none;
+.hero-grid {
+    display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+    gap: 25px; position: relative; z-index: 2;
 }
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    padding-top: 100px;
+.hero-text { animation: slideUp 1s ease both; }
+.eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    color: #c3adff; border: 1px solid rgba(155,112,255,.3);
+    background: rgba(128,80,255,.08); border-radius: 30px;
+    padding: 10px 16px; font-size: 11px; letter-spacing: 1.5px; margin-bottom: 30px;
 }
-
-.tag {
-    display: inline-block;
-    padding: 9px 15px;
-    border: 1px solid var(--border);
-    border-radius: 30px;
-    color: #aebfff;
-    font-size: 12px;
-    letter-spacing: 1px;
-    margin-bottom: 30px;
+.live-dot {
+    height: 7px; width: 7px; border-radius: 50%; background: #a77aff;
+    box-shadow: 0 0 12px #a77aff; animation: blink 2s infinite;
 }
-
 .hero h1 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(48px, 7.5vw, 88px);
-    line-height: 1.08;
-    letter-spacing: -4px;
-    max-width: 850px;
+    font-family: 'Space Grotesk', sans-serif; font-size: clamp(48px,6vw,76px);
+    letter-spacing: -3.8px; line-height: 1.1; font-weight: 600;
 }
-
 .gradient-text {
-    background: linear-gradient(90deg, #75a0ff, #b28aff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    background: linear-gradient(100deg,#a77aff,#728dff,#e18cff);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-
-.hero p {
-    color: var(--muted);
-    max-width: 570px;
-    line-height: 1.9;
-    margin-top: 25px;
-    font-size: 16px;
+.hero-description {
+    max-width: 510px; color: var(--muted); font-size: 15px;
+    line-height: 1.9; margin-top: 25px;
 }
-
-.hero-actions {
-    display: flex;
-    gap: 15px;
-    margin-top: 38px;
-    flex-wrap: wrap;
-}
-
+.hero-buttons { display: flex; gap: 15px; margin-top: 35px; flex-wrap: wrap; }
 .btn {
-    padding: 15px 25px;
-    border-radius: 6px;
-    font-weight: 700;
-    font-size: 13px;
-    transition: .3s;
-    display: inline-block;
+    padding: 15px 23px; border-radius: 7px; font-size: 13px;
+    font-weight: 600; transition: .3s;
 }
-
 .btn-primary {
-    background: white;
-    color: #080b12;
+    background: linear-gradient(100deg,#824be7,#5b75ff);
+    box-shadow: 0 0 25px rgba(129,76,255,.35);
 }
+.btn-primary:hover { transform: translateY(-4px); box-shadow: 0 0 40px rgba(129,76,255,.55); }
+.btn-outline { border: 1px solid var(--border); color: #ddd9eb; }
+.btn-outline:hover { border-color: var(--purple); transform: translateY(-4px); }
 
-.btn-primary:hover {
-    background: #b8c9ff;
-    transform: translateY(-3px);
+/* HERO ANIMATED VISUAL */
+.hero-visual {
+    height: 570px; position: relative; display: flex;
+    align-items: center; justify-content: center; animation: fadeIn 1.5s ease both;
 }
+.orbit {
+    position: absolute; border: 1px solid rgba(170,119,255,.32);
+    border-radius: 50%; box-shadow: inset 0 0 25px rgba(141,87,255,.06),
+    0 0 30px rgba(130,82,255,.08);
+}
+.orbit-one { width: 500px; height: 500px; animation: rotate 28s linear infinite; }
+.orbit-two {
+    width: 390px; height: 390px; animation: rotateReverse 22s linear infinite;
+    border-color: rgba(111,145,255,.45);
+}
+.orbit-three {
+    width: 280px; height: 280px; animation: rotate 17s linear infinite;
+    border-color: rgba(219,122,255,.5);
+}
+.orbit::before {
+    content: ""; position: absolute; width: 11px; height: 11px;
+    border-radius: 50%; background: #c19aff;
+    box-shadow: 0 0 20px 5px rgba(165,103,255,.8); top: 15%; left: 15%;
+}
+.orbit-two::before {
+    top: 75%; left: 5%; background: #7ca4ff;
+    box-shadow: 0 0 20px 5px #625fff;
+}
+.orbit-three::before { top: 20%; left: 80%; }
+.core {
+    width: 175px; height: 175px; border-radius: 50%; position: relative; z-index: 3;
+    display: flex; justify-content: center; align-items: center; flex-direction: column;
+    background: radial-gradient(circle at 30% 20%,#e5c5ff,transparent 30%),
+                radial-gradient(circle at 70% 80%,#f58aff,transparent 40%),
+                linear-gradient(145deg,#9b72ff,#393b93 60%,#15122c);
+    box-shadow: 0 0 35px rgba(156,105,255,.7), 0 0 90px rgba(130,79,255,.4),
+                inset 0 0 30px rgba(255,255,255,.3);
+    animation: float 4s ease-in-out infinite;
+}
+.core::after {
+    content: ""; position: absolute; inset: 7px;
+    border: 1px solid rgba(255,255,255,.4); border-radius: 50%;
+}
+.core strong {
+    font-family: 'Space Grotesk', sans-serif; font-size: 25px;
+    letter-spacing: -1px; text-shadow: 0 2px 10px #4b327d;
+}
+.core small { font-size: 9px; letter-spacing: 2px; margin-top: 7px; color: white; }
 
-.btn-outline {
-    border: 1px solid var(--border);
-    color: white;
+/* FLOATING CARDS */
+.float-card {
+    position: absolute; z-index: 5; padding: 15px 18px;
+    background: rgba(18,15,37,.85); backdrop-filter: blur(15px);
+    border: 1px solid rgba(173,137,255,.25); border-radius: 11px;
+    box-shadow: 0 15px 45px rgba(0,0,0,.35);
+    animation: float 5s ease-in-out infinite;
 }
+.float-card strong { font-size: 12px; display: block; }
+.float-card small { font-size: 10px; color: #aaa3c3; }
+.card-one { top: 15%; right: 0; }
+.card-two { bottom: 15%; left: 0; animation-delay: -2s; }
+.card-three { top: 60%; right: 0; animation-delay: -3s; }
+.float-icon { color: #b99aff; margin-bottom: 7px; font-size: 18px; }
 
-.btn-outline:hover {
-    border-color: var(--blue);
-    transform: translateY(-3px);
-}
+/* ANIMATIONS */
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes rotateReverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-17px); } }
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(35px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 /* COMMON SECTIONS */
-
-section {
-    padding: 110px 0;
-    scroll-margin-top: 75px;
-}
-
+section:not(.hero) { padding: 110px 0; scroll-margin-top: 75px; }
 .section-label {
-    color: var(--blue);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 18px;
+    color: #a88aff; font-size: 11px; font-weight: 700;
+    letter-spacing: 2.5px; margin-bottom: 20px;
 }
-
 .section-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(34px, 5vw, 53px);
-    letter-spacing: -2px;
-    line-height: 1.2;
-    max-width: 700px;
+    font-family: 'Space Grotesk', sans-serif; font-size: clamp(34px,5vw,55px);
+    letter-spacing: -2px; line-height: 1.2;
 }
-
-.section-desc {
-    color: var(--muted);
-    line-height: 1.9;
-    max-width: 620px;
-    margin-top: 20px;
+.section-description {
+    color: var(--muted); font-size: 14px; line-height: 1.9;
+    max-width: 630px; margin-top: 20px;
 }
 
 /* ABOUT */
-
 .about {
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    background: #0b101a;
+    background: linear-gradient(110deg,#100d20,#0b0a16);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
 }
-
 .about-grid {
-    display: grid;
-    grid-template-columns: 1.2fr .8fr;
-    gap: 80px;
-    align-items: center;
+    display: grid; grid-template-columns: 1.2fr .8fr;
+    gap: 70px; align-items: center;
+}
+.about-art {
+    height: 300px; border: 1px solid rgba(159,117,255,.2);
+    border-radius: 18px;
+    background: radial-gradient(circle at 50% 50%,rgba(133,83,255,.3),transparent 65%), #100e1d;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+}
+.about-art::before, .about-art::after {
+    content: ""; position: absolute; border: 1px solid rgba(173,132,255,.4);
+    border-radius: 50%; width: 220px; height: 220px;
+    animation: rotate 20s linear infinite;
+}
+.about-art::after {
+    width: 160px; height: 160px; border-color: rgba(119,145,255,.5);
+    animation-direction: reverse;
+}
+.about-mark {
+    z-index: 2; font-family: 'Space Grotesk',sans-serif;
+    font-size: 60px; font-weight: 700;
+    background: linear-gradient(100deg,#fff,#9c82ff);
+    color: transparent; background-clip: text;
 }
 
-.about-card {
-    background: linear-gradient(145deg, #151f35, #101521);
-    border: 1px solid var(--border);
-    padding: 40px;
-    border-radius: 14px;
-    min-height: 260px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+/* FOUNDER */
+.founder {
+    margin-top: 28px; display: flex; align-items: center; gap: 12px;
 }
-
-.ts-mark {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 65px;
-    font-weight: 700;
-    letter-spacing: -6px;
-    color: #8eacff;
+.founder-line { width: 28px; height: 1px; background: #a88aff; }
+.founder-info { display: flex; flex-direction: column; gap: 3px; }
+.founder-info strong {
+    font-family: 'Space Grotesk',sans-serif; font-size: 13px;
+    font-weight: 600; color: #e8e2ff;
 }
-
-.about-card p {
-    color: #b6c0d1;
-    line-height: 1.8;
-    font-size: 14px;
+.founder-info span {
+    color: #9b93b2; font-size: 10px; letter-spacing: 1.5px;
+    text-transform: uppercase;
 }
 
 /* PRODUCTS */
-
-.products {
-    background: var(--bg);
-}
-
-.products-header {
-    margin-bottom: 45px;
-}
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
-}
-
+.products { background: #090713; }
+.product-heading { margin-bottom: 45px; }
+.product-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 22px; }
 .product-card {
-    padding: 32px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    transition: .3s;
-    min-height: 285px;
+    position: relative; overflow: hidden; padding: 35px; min-height: 290px;
+    background: linear-gradient(145deg,#171329,#0f0d1d);
+    border: 1px solid var(--border); border-radius: 14px; transition: .4s;
 }
-
+.product-card::after {
+    content: ""; position: absolute; width: 220px; height: 220px;
+    border-radius: 50%; background: rgba(129,84,255,.12);
+    filter: blur(50px); top: -80px; right: -80px;
+}
 .product-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(110,145,255,.5);
+    transform: translateY(-8px); border-color: rgba(160,120,255,.5);
+    box-shadow: 0 20px 60px rgba(89,57,160,.15);
 }
-
 .product-icon {
-    width: 55px;
-    height: 55px;
-    display: grid;
-    place-items: center;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #273b76, #44306e);
-    font-size: 25px;
-    margin-bottom: 27px;
+    width: 55px; height: 55px; display: grid; place-items: center;
+    border-radius: 13px; background: linear-gradient(140deg,#7952c7,#3e55a7);
+    font-size: 25px; margin-bottom: 25px; position: relative; z-index: 2;
 }
-
 .product-card h3 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 23px;
-    margin-bottom: 13px;
+    font-family: 'Space Grotesk',sans-serif; font-size: 23px;
+    margin-bottom: 13px; position: relative; z-index: 2;
 }
-
 .product-card p {
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.8;
+    color: var(--muted); font-size: 13px; line-height: 1.9;
+    position: relative; z-index: 2;
 }
-
-.status {
-    display: inline-block;
-    margin-top: 22px;
-    font-size: 11px;
-    color: #a8baff;
-    border: 1px solid rgba(120,150,255,.3);
-    padding: 7px 11px;
-    border-radius: 20px;
+.product-status {
+    display: inline-block; margin-top: 23px; padding: 7px 12px;
+    border-radius: 30px; color: #c3aaff; background: rgba(145,98,255,.1);
+    border: 1px solid rgba(145,98,255,.25); font-size: 10px;
+    letter-spacing: 1px; position: relative; z-index: 2;
 }
 
 /* VISION */
-
 .vision {
-    background: linear-gradient(120deg, #111b34, #10101c);
-    border-top: 1px solid var(--border);
+    background: radial-gradient(ellipse at center,rgba(112,65,195,.2),transparent 65%), #100c20;
+    text-align: center; border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
 }
-
-.vision-content {
-    max-width: 800px;
-    margin: auto;
-    text-align: center;
-}
-
-.vision-content .section-title {
-    margin: auto;
-}
-
-.vision-content .section-desc {
-    margin: 22px auto 0;
-}
+.vision .section-title { max-width: 800px; margin: auto; }
+.vision .section-description { margin: 22px auto 0; }
 
 /* VALUES */
-
-.values-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 45px;
-}
-
+.values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 45px; }
 .value-card {
-    border: 1px solid var(--border);
-    background: var(--card);
-    padding: 30px;
-    border-radius: 10px;
+    background: var(--card); border: 1px solid var(--border);
+    padding: 30px; border-radius: 12px; transition: .3s;
 }
-
-.value-number {
-    font-size: 12px;
-    color: var(--blue);
-    margin-bottom: 22px;
-}
-
-.value-card h3 {
-    font-size: 19px;
-    margin-bottom: 12px;
-}
-
-.value-card p {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.8;
-}
+.value-card:hover { transform: translateY(-5px); border-color: rgba(148,107,255,.45); }
+.value-number { color: #a88aff; font-size: 11px; letter-spacing: 2px; margin-bottom: 23px; }
+.value-card h3 { font-size: 19px; margin-bottom: 13px; }
+.value-card p { color: var(--muted); font-size: 13px; line-height: 1.9; }
 
 /* FOOTER */
-
-footer {
-    padding: 45px 0;
-    border-top: 1px solid var(--border);
-}
-
+footer { padding: 45px 0; background: #07050e; border-top: 1px solid var(--border); }
 .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 20px; flex-wrap: wrap;
 }
+.footer-content p { color: #858094; font-size: 12px; margin-top: 10px; }
+.footer-tagline { font-size: 11px; letter-spacing: 3px; color: #a88aff; }
 
-.footer-content p {
-    color: var(--muted);
-    font-size: 12px;
+/* SCROLL REVEAL */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease,transform .8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media(max-width:850px) {
+    .nav-links { gap: 20px; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero { padding-top: 150px; }
+    .hero-visual { height: 450px; }
+    .orbit-one { width: 390px; height: 390px; }
+    .orbit-two { width: 310px; height: 310px; }
+    .orbit-three { width: 225px; height: 225px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
 }
-
-.footer-tagline {
-    color: #8faaff;
-    font-size: 12px;
-    letter-spacing: 2px;
-}
-
-/* ANIMATION */
-
-.reveal {
-    opacity: 0;
-    transform: translateY(25px);
-    transition: opacity .7s ease, transform .7s ease;
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* MOBILE */
-
-@media(max-width: 768px) {
-    .nav {
-        height: 68px;
-    }
-
-    .menu-btn {
-        display: block;
-    }
-
+@media(max-width:650px) {
+    .nav { height: 70px; }
+    .menu-btn { display: block; }
     .nav-links {
-        display: none;
-        position: absolute;
-        top: 68px;
-        left: 0;
-        width: 100%;
-        background: #0d121d;
-        padding: 25px 5%;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 23px;
+        display: none; position: absolute; top: 70px; left: 0;
+        width: 100%; padding: 25px 5%; background: #100d1b;
+        flex-direction: column; align-items: flex-start;
         border-bottom: 1px solid var(--border);
     }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .hero {
-        min-height: 700px;
-    }
-
-    .hero h1 {
-        letter-spacing: -2.5px;
-    }
-
-    section {
-        padding: 80px 0;
-    }
-
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 35px;
-    }
-
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .values-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .about-card {
-        padding: 28px;
-    }
+    .nav-links.active { display: flex; }
+    .hero { min-height: auto; padding-top: 150px; padding-bottom: 50px; }
+    .hero h1 { letter-spacing: -2.5px; }
+    .hero-visual { height: 390px; margin-top: 20px; }
+    .orbit-one { width: 330px; height: 330px; }
+    .orbit-two { width: 260px; height: 260px; }
+    .orbit-three { width: 190px; height: 190px; }
+    .core { width: 140px; height: 140px; }
+    .core strong { font-size: 21px; }
+    .float-card { padding: 11px; }
+    .card-one { right: -3px; }
+    .card-two { left: -3px; }
+    .card-three { right: -3px; }
+    section:not(.hero) { padding: 80px 0; }
+    .product-grid, .values-grid { grid-template-columns: 1fr; }
+    .product-card { padding: 28px; }
+    .footer-content { flex-direction: column; align-items: flex-start; }
 }
-
+@media(max-width:370px) {
+    .orbit-one { width: 285px; height: 285px; }
+    .orbit-two { width: 225px; height: 225px; }
+    .orbit-three { width: 170px; height: 170px; }
+    .float-card { padding: 8px; }
+}
 @media(prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after {
+    *,*::before,*::after {
         animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
         transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
     }
+    .reveal { opacity: 1; transform: none; }
 }
 </style>
 </head>
 
 <body>
+<div class="noise"></div>
 
 <header>
     <div class="container nav">
-
-        <a href="#home" class="logo">TERRA<span>SOFT.</span></a>
-
-        <button class="menu-btn" id="menuBtn"
-        aria-label="Toggle navigation" aria-expanded="false">
-            ☰
-        </button>
-
+        <a href="#home" class="logo">TERRA<span>CESOFT.</span></a>
+        <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>
         <nav class="nav-links" id="navLinks">
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#products">Products</a>
             <a href="#vision">Vision</a>
             <a href="#values">Our Values</a>
-            <a href="#products" class="nav-button">Explore Products ↗</a>
+            <a href="#products" class="nav-cta">Explore ↗</a>
         </nav>
-
     </div>
 </header>
 
 <main>
-
-<!-- HERO -->
-
 <section class="hero" id="home">
-    <div class="container hero-content">
-
-        <div class="tag">INDEPENDENT TECHNOLOGY COMPANY</div>
-
-        <h1>
-            Turning Ideas Into
-            <span class="gradient-text">Digital Experiences.</span>
-        </h1>
-
-        <p>
-            We believe every great innovation starts with an idea.
-            At Terracesoft, we explore technology, create digital
-            products and build experiences designed for the future.
-        </p>
-
-        <div class="hero-actions">
-            <a href="#products" class="btn btn-primary">
-                Explore Our Products ↗
-            </a>
-
-            <a href="#about" class="btn btn-outline">
-                Discover Terracesoft
-            </a>
+    <div class="container hero-grid">
+        <div class="hero-text">
+            <div class="eyebrow"><span class="live-dot"></span> INDEPENDENT TECHNOLOGY COMPANY</div>
+            <h1>Beyond Ideas.<br>Into <span class="gradient-text">Innovation.</span></h1>
+            <p class="hero-description">
+                We believe technology has the power to transform
+                ideas into meaningful digital experiences.
+                Discover a world of innovation with Terracesoft.
+            </p>
+            <div class="hero-buttons">
+                <a href="#products" class="btn btn-primary">Explore Our Products ↗</a>
+                <a href="#about" class="btn btn-outline">Discover More</a>
+            </div>
         </div>
 
+        <div class="hero-visual">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="orbit orbit-three"></div>
+            <div class="core"><strong>T/S</strong><small>INNOVATION</small></div>
+            <div class="float-card card-one">
+                <div class="float-icon">✦</div>
+                <strong>Digital Innovation</strong><small>Ideas into reality</small>
+            </div>
+            <div class="float-card card-two">
+                <div class="float-icon">◈</div>
+                <strong>Technology</strong><small>Built for tomorrow</small>
+            </div>
+            <div class="float-card card-three">
+                <div class="float-icon">⌘</div>
+                <strong>Our Products</strong><small>Designed to evolve</small>
+            </div>
+        </div>
     </div>
 </section>
-
-<!-- ABOUT -->
 
 <section class="about" id="about">
     <div class="container about-grid">
-
         <div class="reveal">
-            <div class="section-label">01 — WHO WE ARE</div>
-
+            <div class="section-label">01 — ABOUT TERRACESOFT</div>
             <h2 class="section-title">
-                Technology is not just what we use.
-                It's what we <span class="gradient-text">create.</span>
+                We don't just imagine the future.
+                We <span class="gradient-text">build it.</span>
             </h2>
-
-            <p class="section-desc">
+            <p class="section-description">
                 Terracesoft is an independent technology company
-                focused on developing its own digital products,
+                focused on creating its own digital products,
                 software applications and interactive experiences.
-
-                Our journey is driven by curiosity, creativity
-                and the ambition to turn ideas into reality.
+                Driven by curiosity and creativity, we explore
+                new possibilities and transform ideas into
+                technology-driven products.
             </p>
+
+            <div class="founder">
+                <span class="founder-line"></span>
+                <div class="founder-info">
+                    <strong>Adharsh CK</strong>
+                    <span>Founder &amp; CEO</span>
+                </div>
+            </div>
         </div>
 
-        <div class="about-card reveal">
-            <div class="ts-mark">T/S</div>
-
-            <p>
-                Independent thinking.<br>
-                Creative technology.<br>
-                Continuous innovation.
-            </p>
+        <div class="about-art reveal">
+            <div class="about-mark">T/S</div>
         </div>
-
     </div>
 </section>
 
-<!-- PRODUCTS -->
-
 <section class="products" id="products">
     <div class="container">
-
-        <div class="products-header reveal">
+        <div class="product-heading reveal">
             <div class="section-label">02 — OUR PRODUCTS</div>
-
             <h2 class="section-title">
-                Ideas becoming
-                <span class="gradient-text">real products.</span>
+                Built from ideas.<br>
+                <span class="gradient-text">Designed for the future.</span>
             </h2>
-
-            <p class="section-desc">
-                We focus on building and growing our own
-                digital products across different areas of technology.
+            <p class="section-description">
+                A growing collection of digital products
+                developed under the Terracesoft brand.
             </p>
         </div>
 
         <div class="product-grid">
-
             <article class="product-card reveal">
                 <div class="product-icon">◉</div>
-
                 <h3>GPS Speed Meter</h3>
-
                 <p>
-                    A GPS-powered mobile application concept
-                    focused on speed tracking, distance measurement
-                    and real-time driving information.
+                    A GPS-powered mobile application designed
+                    to track speed, measure distance and provide
+                    real-time driving information.
                 </p>
-
-                <span class="status">IN DEVELOPMENT</span>
+                <span class="product-status">IN DEVELOPMENT</span>
             </article>
 
             <article class="product-card reveal">
                 <div class="product-icon">▣</div>
-
                 <h3>Techdesk</h3>
-
                 <p>
                     A digital workspace concept designed to
                     organize IT support activities, manage tickets
                     and simplify technical workflows.
                 </p>
-
-                <span class="status">IN DEVELOPMENT</span>
+                <span class="product-status">IN DEVELOPMENT</span>
             </article>
-
         </div>
     </div>
 </section>
 
-<!-- VISION -->
-
 <section class="vision" id="vision">
-    <div class="container vision-content reveal">
-
+    <div class="container reveal">
         <div class="section-label">03 — OUR VISION</div>
-
         <h2 class="section-title">
-            Think Beyond.
+            Think Beyond.<br>
             <span class="gradient-text">Build What's Next.</span>
         </h2>
-
-        <p class="section-desc">
+        <p class="section-description">
             Our vision is to grow into a technology-driven
             company with a portfolio of meaningful digital products.
-            We aim to explore new possibilities, embrace emerging
-            technologies and create products that make a difference.
+            We aim to explore emerging technologies, challenge
+            limitations and create experiences that matter.
         </p>
-
     </div>
 </section>
 
-<!-- VALUES -->
-
 <section id="values">
     <div class="container">
-
         <div class="reveal">
             <div class="section-label">04 — WHAT DRIVES US</div>
-
             <h2 class="section-title">
-                Built on ideas.
-                Driven by <span class="gradient-text">purpose.</span>
+                Our principles.<br>
+                <span class="gradient-text">Our direction.</span>
             </h2>
         </div>
 
         <div class="values-grid">
-
             <div class="value-card reveal">
                 <div class="value-number">01 / THINK</div>
                 <h3>Think Differently</h3>
@@ -717,60 +552,46 @@ footer {
                 <h3>Keep Evolving</h3>
                 <p>
                     Technology never stands still.
-                    Neither do we. Learning and innovation
+                    Learning, adapting and innovation
                     are part of our journey.
                 </p>
             </div>
-
         </div>
     </div>
 </section>
-
 </main>
-
-<!-- FOOTER -->
 
 <footer>
     <div class="container footer-content">
-
         <div>
-            <a href="#home" class="logo">TERRA<span>SOFT.</span></a>
-            <p style="margin-top:10px;">
-                © 2026 Terracesoft. All rights reserved.
-            </p>
+            <a href="#home" class="logo">TERRA<span>CESOFT.</span></a>
+            <p>© 2026 Terracesoft. All rights reserved.</p>
         </div>
-
-        <div class="footer-tagline">
-            RISE. DREAM. BUILD.
-        </div>
-
+        <div class="footer-tagline">RISE. DREAM. BUILD.</div>
     </div>
 </footer>
 
 <script>
-
-// Mobile Navigation
-
+// MOBILE NAVIGATION
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
 
 menuBtn.addEventListener("click", () => {
-    const isOpen = navLinks.classList.toggle("active");
-    menuBtn.setAttribute("aria-expanded", isOpen);
-    menuBtn.textContent = isOpen ? "✕" : "☰";
+    const opened = navLinks.classList.toggle("active");
+    menuBtn.textContent = opened ? "✕" : "☰";
+    menuBtn.setAttribute("aria-expanded", opened);
 });
 
 document.querySelectorAll(".nav-links a").forEach(link => {
     link.addEventListener("click", () => {
         navLinks.classList.remove("active");
-        menuBtn.setAttribute("aria-expanded", "false");
         menuBtn.textContent = "☰";
+        menuBtn.setAttribute("aria-expanded", "false");
     });
 });
 
-// Scroll Reveal Animation
-
-const observer = new IntersectionObserver(entries => {
+// SCROLL ANIMATION
+const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add("visible");
@@ -782,8 +603,6 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll(".reveal").forEach(element => {
     observer.observe(element);
 });
-
 </script>
-
 </body>
 </html>

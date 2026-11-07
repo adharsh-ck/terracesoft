@@ -313,6 +313,66 @@ footer { padding: 45px 0; background: #07050e; border-top: 1px solid var(--borde
 .footer-content p { color: #858094; font-size: 12px; margin-top: 10px; }
 .footer-tagline { font-size: 11px; letter-spacing: 3px; color: #a88aff; }
 
+
+/* CONTACT */
+.contact {
+    background: radial-gradient(ellipse at 80% 45%, rgba(112,65,195,.13), transparent 55%), #0b0915;
+    border-top: 1px solid var(--border);
+}
+.contact-heading { margin-bottom: 42px; }
+.contact-layout {
+    display: grid; grid-template-columns: .8fr 1.2fr; gap: 25px; align-items: stretch;
+}
+.contact-side, .contact-form {
+    background: linear-gradient(145deg,#171329,#0f0d1d);
+    border: 1px solid var(--border); border-radius: 14px; padding: 32px;
+}
+.contact-side-icon {
+    width: 52px; height: 52px; border-radius: 12px; display: grid; place-items: center;
+    background: linear-gradient(140deg,#7952c7,#3e55a7); font-size: 23px; margin-bottom: 25px;
+}
+.contact-side h3 {
+    font-family: 'Space Grotesk',sans-serif; font-size: 23px; margin-bottom: 13px;
+}
+.contact-side p { color: var(--muted); font-size: 13px; line-height: 1.9; }
+.contact-email {
+    display: inline-block; margin-top: 22px; color: #c5aaff; font-size: 13px;
+    overflow-wrap: anywhere;
+}
+.contact-founder {
+    margin-top: 42px; padding-top: 22px; border-top: 1px solid var(--border);
+    display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+}
+.contact-founder span { color: #9b93b2; font-size: 10px; letter-spacing: 1.6px; }
+.contact-founder a { font-family: 'Space Grotesk',sans-serif; font-weight: 600; font-size: 16px; }
+.contact-founder a:hover, .founder-info a:hover { color: #b99aff; }
+.contact-founder small { color: #89839c; font-size: 11px; }
+.contact-form { display: flex; flex-direction: column; gap: 11px; }
+.contact-form label { font-size: 12px; color: #e6e1f2; margin-top: 8px; }
+.contact-form input, .contact-form textarea {
+    width: 100%; border: 1px solid rgba(255,255,255,.12); outline: none;
+    background: rgba(5,4,12,.55); color: white; border-radius: 7px;
+    padding: 15px 16px; font: inherit; font-size: 13px; resize: vertical;
+    transition: border-color .25s, box-shadow .25s;
+}
+.contact-form input:focus, .contact-form textarea:focus {
+    border-color: #9870ff; box-shadow: 0 0 0 3px rgba(142,99,255,.12);
+}
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: #777286; }
+.contact-submit {
+    margin-top: 14px; width: 100%; border: 0; border-radius: 7px; padding: 16px;
+    color: white; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer;
+    background: linear-gradient(100deg,#824be7,#5b75ff);
+    box-shadow: 0 0 25px rgba(129,76,255,.25); transition: .3s;
+}
+.contact-submit:hover { transform: translateY(-3px); box-shadow: 0 0 35px rgba(129,76,255,.4); }
+.contact-submit span { margin-left: 6px; }
+.form-note { color: #89839c; font-size: 10px; line-height: 1.6; text-align: center; margin-top: 5px; }
+.form-success { color: #9fe5bd; font-size: 12px; text-align: center; }
+@media(max-width:850px) {
+    .contact-layout { grid-template-columns: 1fr; }
+}
+
 /* SCROLL REVEAL */
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease,transform .8s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -386,6 +446,7 @@ footer { padding: 45px 0; background: #07050e; border-top: 1px solid var(--borde
             <a href="#products">Products</a>
             <a href="#vision">Vision</a>
             <a href="#values">Our Values</a>
+            <a href="#contact">Contact</a>
             <a href="#products" class="nav-cta">Explore ↗</a>
         </nav>
     </div>
@@ -449,7 +510,7 @@ footer { padding: 45px 0; background: #07050e; border-top: 1px solid var(--borde
             <div class="founder">
                 <span class="founder-line"></span>
                 <div class="founder-info">
-                    <strong>Adharsh CK</strong>
+                    <strong><a href="https://www.linkedin.com/in/adharsh-ck/" target="_blank" rel="noopener noreferrer">Adharsh CK ↗</a></strong>
                     <span>Founder &amp; CEO</span>
                 </div>
             </div>
@@ -561,13 +622,69 @@ footer { padding: 45px 0; background: #07050e; border-top: 1px solid var(--borde
 </section>
 </main>
 
+
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="contact-heading reveal">
+            <div class="section-label">05 — GET IN TOUCH</div>
+            <h2 class="section-title">Let's start a <span class="gradient-text">conversation.</span></h2>
+            <p class="section-description">
+                Have a question about Terracesoft or one of our products?
+                Send us a message. We'd be glad to hear from you.
+            </p>
+        </div>
+
+        <div class="contact-layout">
+            <div class="contact-side reveal">
+                <div class="contact-side-icon">✉</div>
+                <h3>Connect with Terracesoft</h3>
+                <p>For product questions, feedback and general enquiries, reach us by email.</p>
+                <a class="contact-email" href="mailto:officialterracesoft@gmail.com">officialterracesoft@gmail.com ↗</a>
+                <div class="contact-founder">
+                    <span>FOUNDER &amp; CEO</span>
+                    <a href="https://www.linkedin.com/in/adharsh-ck/" target="_blank" rel="noopener noreferrer">Adharsh CK ↗</a>
+                    <small>Connect on LinkedIn</small>
+                </div>
+            </div>
+
+            <form class="contact-form reveal"
+                  action="https://formsubmit.co/officialterracesoft@gmail.com"
+                  method="POST">
+                <input type="hidden" name="_subject" value="New message from Terracesoft website">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="true">
+                <input type="hidden" name="_next" value="https://adharsh-ck.github.io/terracesoft/?message=sent#contact">
+
+                <label for="contact-name">Your Name</label>
+                <input id="contact-name" type="text" name="name" placeholder="Your name" required>
+
+                <label for="contact-email">Your Email Address</label>
+                <input id="contact-email" type="email" name="email" placeholder="you@example.com" required>
+
+                <label for="contact-subject">Subject</label>
+                <input id="contact-subject" type="text" name="subject" placeholder="How can we help?" required>
+
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="message" rows="5"
+                          placeholder="Write your message here..." required></textarea>
+
+                <button class="contact-submit" type="submit">Send Message <span>↗</span></button>
+                <p class="form-note">Your message will be sent to the Terracesoft email address.</p>
+                <p class="form-success" id="formSuccess" role="status" aria-live="polite" hidden>
+                    Thank you! Your message has been submitted.
+                </p>
+            </form>
+        </div>
+    </div>
+</section>
+
 <footer>
     <div class="container footer-content">
         <div>
             <a href="#home" class="logo">TERRA<span>CESOFT.</span></a>
             <p>© 2026 Terracesoft. All rights reserved.</p>
         </div>
-        <div class="footer-tagline">RISE. DREAM. BUILD.</div>
+        <div class="footer-tagline"><a href="#contact">CONTACT</a> &nbsp;·&nbsp; RISE. DREAM. BUILD.</div>
     </div>
 </footer>
 
@@ -589,6 +706,15 @@ document.querySelectorAll(".nav-links a").forEach(link => {
         menuBtn.setAttribute("aria-expanded", "false");
     });
 });
+
+
+// Show a confirmation notice after FormSubmit redirects back to the site.
+const pageParams = new URLSearchParams(window.location.search);
+if (pageParams.get("message") === "sent") {
+    const successMessage = document.getElementById("formSuccess");
+    if (successMessage) successMessage.hidden = false;
+    history.replaceState({}, document.title, window.location.pathname + "#contact");
+}
 
 // SCROLL ANIMATION
 const observer = new IntersectionObserver((entries) => {

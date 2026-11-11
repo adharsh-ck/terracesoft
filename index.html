@@ -253,6 +253,30 @@ contactForm.addEventListener("submit", async event => {
   }
 });
 
+  <!-- Mute / Unmute Toggle Button -->
+<button id="music-toggle">🔊 Mute Music</button>
+
+<audio id="bg-music" loop autoplay muted>
+  <source src=E:\Web-Mp3 type="audio/mpeg">
+</audio>
+
+<script>
+  const audio = document.getElementById('bg-music');
+  const btn = document.getElementById('music-toggle');
+  audio.volume = 0.25; // Gentle background volume
+
+  btn.addEventListener('click', () => {
+    if (audio.muted) {
+      audio.muted = false;
+      audio.play();
+      btn.textContent = '🔊 Mute Music';
+    } else {
+      audio.muted = true;
+      btn.textContent = '🔈 Unmute Music';
+    }
+  });
+</script>
+
 // Scroll reveal
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(entries => {
